@@ -29,6 +29,7 @@ local ext = {
   repl = require("iron.fts.common").functions,
   strings = require("iron.util.strings"),
   tables = require("iron.util.tables"),
+  features = require("iron.features")
 }
 local iron = {
   memory = {},
@@ -190,6 +191,14 @@ iron.core.focus_on = function(ft)
   iron.behavior.visibility.focus(mem.bufnr, showfn)
 
   return mem
+end
+
+iron.core.set_flag = function(feature, enable)
+  if enable then
+    ext.features.enable(feature)
+  else
+    ext.features.disable(feature)
+  end
 end
 
 iron.core.set_config = function(cfg)
