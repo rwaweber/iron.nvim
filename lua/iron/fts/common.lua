@@ -1,4 +1,10 @@
 local extend = require("iron.util.tables").extend
+local lf
+if vim.api.nvim_call_function("has", {"win32"}) == 0 then
+  lf = "\13"
+else
+  lf = "\13\10"
+end
 local fthelper = {
   functions = {},
   types = {}
@@ -18,7 +24,7 @@ fthelper.functions.format = function(repldef, lines)
   end
 
   if #new > 0 then
-    new[#new] = new[#new] .. "\13"
+    new[#new] = new[#new] .. lf
   end
 
   return new
