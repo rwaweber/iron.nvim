@@ -3,7 +3,7 @@ local lf
 if vim.api.nvim_call_function("has", {"win32"}) == 0 then
   lf = "\13"
 else
-  lf = "\13\10"
+  lf = "\10\13"
 end
 local fthelper = {
   functions = {},
