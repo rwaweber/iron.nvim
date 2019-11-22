@@ -1,4 +1,5 @@
 local extend = require("iron.util.tables").extend
+local lf = require("iron.fts.common").lf
 local python = {}
 
 local format = function(open, close, cr)
@@ -18,7 +19,7 @@ end
 local def = function(cmd)
   return {
     command = cmd,
-    format = format("\27[200~", "\27[201~\13", "\13")
+    format = format("\27[200~", "\27[201~" .. lf, lf)
   }
 end
 
