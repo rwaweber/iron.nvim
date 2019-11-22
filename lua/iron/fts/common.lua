@@ -8,7 +8,7 @@ local fthelper = {
 if vim.api.nvim_call_function("has", {"win32"}) == 0 then
   fthelper.lf = "\13"
 else
-  fthelper.lf = "\10\13"
+  fthelper.lf = "\13\10"
 end
 
 fthelper.functions.format = function(repldef, lines)
