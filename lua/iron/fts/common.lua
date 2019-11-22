@@ -1,14 +1,15 @@
 local extend = require("iron.util.tables").extend
-local lf
-if vim.api.nvim_call_function("has", {"win32"}) == 0 then
-  lf = "\13"
-else
-  lf = "\10\13"
-end
+
 local fthelper = {
   functions = {},
   types = {}
 }
+
+if vim.api.nvim_call_function("has", {"win32"}) == 0 then
+  fthelper.lf = "\13"
+else
+  fthelper.lf = "\10\13"
+end
 
 fthelper.functions.format = function(repldef, lines)
   assert(type(lines) == "table", "Supplied lines is not a table")
@@ -24,7 +25,7 @@ fthelper.functions.format = function(repldef, lines)
   end
 
   if #new > 0 then
-    new[#new] = new[#new] .. lf
+    new[#new] = new[#new] .. fthelper.lf
   end
 
   return new
