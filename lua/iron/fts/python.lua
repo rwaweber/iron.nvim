@@ -23,7 +23,9 @@ local def = function(cmd)
   local definition = {
     command = cmd,
   }
-  if not is_win then
+  if is_win then
+    definition.close = {""}
+  else
     defintion.format = format("\27[200~", "\27[201~", "\27" .. lf)
   end
   return defintion
