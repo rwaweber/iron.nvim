@@ -26,9 +26,10 @@ local def = function(cmd)
   if is_win then
     definition.close = {""}
   else
-    defintion.format = format("\27[200~", "\27[201~", "\27" .. lf)
+    definition.format = format("\27[200~", "\27[201~", "\27" .. lf)
   end
-  return defintion
+
+  return definition
 end
 
 python.ptipython = def({"ptipython"})
