@@ -145,6 +145,14 @@ iron.ll.send_to_repl = function(ft, data)
     dt = ext.strings.split(data, require("iron.fts.common").lf)
   end
 
+  local ndt = {}
+  for _, ln in ipairs(dt) do
+    table.insert(ext.strings.split(ln, "\13")[1])
+  end
+
+  dt = ndt
+
+
   local mem = iron.ll.get_from_memory(ft)
   dt = ext.repl.format(mem.repldef, dt)
 
