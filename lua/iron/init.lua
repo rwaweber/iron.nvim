@@ -147,7 +147,7 @@ iron.ll.send_to_repl = function(ft, data)
 
   local ndt = {}
   for _, ln in ipairs(dt) do
-    table.insert(ndt, ext.strings.split(ln, "\13")[1])
+    table.insert(ndt, ext.strings.split(ln, "\10")[1])
   end
 
   dt = ndt
