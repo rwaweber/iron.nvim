@@ -142,7 +142,7 @@ iron.ll.send_to_repl = function(ft, data)
   local dt = data
 
   if type(data) == "string" then
-    dt = ext.strings.split(data, '\n')
+    dt = ext.strings.split(data, iron.fts.common.lf)
   end
 
   local mem = iron.ll.get_from_memory(ft)
