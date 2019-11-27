@@ -1,5 +1,8 @@
 local extend = require("iron.util.tables").extend
 local lf = require("iron.fts.common").lf
+
+local is_win = vim.api.nvim_call_function("has", {"win32"}) ~= 0
+
 local python = {}
 
 local format = function(open, close, endline)
@@ -17,10 +20,13 @@ local format = function(open, close, endline)
 end
 
 local def = function(cmd)
-  return {
+  local definition = {
     command = cmd,
-    format = format("\27[200~", "\27[201~", "\27" .. lf)
   }
+  if not is_win then
+    defintion.format = format("\27[200~", "\27[201~", "\27" .. lf)
+  end
+  return defintion
 end
 
 python.ptipython = def({"ptipython"})
