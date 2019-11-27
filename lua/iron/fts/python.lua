@@ -20,16 +20,10 @@ local format = function(open, close, endline)
 end
 
 local def = function(cmd)
-  local definition = {
+  return {
     command = cmd,
+    format = format("\27[200~", "\27[201~", "\27" .. lf)
   }
-  if is_win then
-    definition.close = {""}
-  else
-    definition.format = format("\27[200~", "\27[201~", "\27" .. lf)
-  end
-
-  return definition
 end
 
 python.ptipython = def({"ptipython"})
