@@ -374,7 +374,7 @@ iron.core.send_chunk = function(mode, mtype)
 
   iron.core.send(ft, lines)
 
-  local mark = vim.api.nvim_buf_get_extmark_by_id(0, iron.namespace, iron.mark.save_pos)
+  local mark = vim.api.nvim_buf_get_extmark_by_id(0, iron.namespace, iron.mark.save_pos, {})
 
   if #mark ~= 0 then
     -- winrestview is 1-based
@@ -385,7 +385,6 @@ iron.core.send_chunk = function(mode, mtype)
   vim.api.nvim_buf_set_extmark(
     0,
     iron.namespace,
-    iron.mark.begin_last,
     b_line - 1,
     b_col - 1,
     {}
@@ -394,7 +393,6 @@ iron.core.send_chunk = function(mode, mtype)
   vim.api.nvim_buf_set_extmark(
     0,
     iron.namespace,
-    iron.mark.end_last,
     e_line - 1,
     e_col -1,
     {}
